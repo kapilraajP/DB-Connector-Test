@@ -13,7 +13,7 @@ import ballerina/test;
 @test:Config{}
 function testRetrieveById(){
 
-    json|error result = dbClient.retriveById(1);
+    json|error result = dbClient->retriveById(1);
 
     if result is json{
             io:println(result.toString());
@@ -28,7 +28,7 @@ function testAddnewCustomer(){
 
     Customer customer = {id:1, name:"customer", age:20};
 
-    json|error result = dbClient.addnewCustomer(customer);
+    json|error result = dbClient->addnewCustomer(customer);
 
     if result is json{
             io:println(result.toString());
@@ -44,7 +44,7 @@ function testUpdateExistingCustomer(){
 
     Customer customer = {id:1, name:"customerupdate", age:22};
 
-    json|error result = dbClient.updateExistingCustomer(customer);
+    json|error result = dbClient->updateExistingCustomer(customer);
 
     if result is json{
             io:println(result.toString());
@@ -57,7 +57,7 @@ function testUpdateExistingCustomer(){
 @test:Config{}
 function testDeleteCustomer){
 
-    json|error result = dbClient.deleteCustomer(1);
+    json|error result = dbClient->deleteCustomer(1);
 
     if result is json{
             io:println(result.toString());
