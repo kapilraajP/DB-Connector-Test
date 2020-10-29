@@ -28,7 +28,7 @@ public class MyClient{
     }
 
 
-    public function retriveById(int customerId) returns @tainted json|error {
+    public remote function retriveById(int customerId) returns @tainted json|error {
         http:Response? result = new;
 
         result = <http:Response> self.newClient->get(string `/data/customers/${customerId}`);
@@ -53,7 +53,7 @@ public class MyClient{
         }
     }
 
-    public function addnewCustomer(Customer customer) returns @tainted json|error {
+    public remote function addnewCustomer(Customer customer) returns @tainted json|error {
         http:Response? result = new;
 
         result = <http:Response> self.newClient->post(string `/data/customers/`,<@untainted> check customer.cloneWithType(json));
@@ -79,7 +79,7 @@ public class MyClient{
     }
     
 
-    public function UpdateExistingCustomer(Customer customer) returns @tainted json|error {
+    public remote function UpdateExistingCustomer(Customer customer) returns @tainted json|error {
         http:Response? result = new;
 
         result = <http:Response> self.newClient->put(string `/data/customers/`,<@untainted> check customer.cloneWithType(json));
@@ -100,7 +100,7 @@ public class MyClient{
         }
     } 
     
-    public function deleteCustomer(int customerId) returns @tainted json|error {
+    public remote function deleteCustomer(int customerId) returns @tainted json|error {
         http:Response? result = new;
 
         result = <http:Response> self.newClient->delete(string `/data/customers/${customerId}`);
